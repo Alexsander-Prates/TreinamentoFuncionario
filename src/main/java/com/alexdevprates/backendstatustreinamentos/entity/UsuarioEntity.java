@@ -14,6 +14,10 @@ public class UsuarioEntity{
 
     private Strign senha;
 
+    private String setor;
+
+    private String cargo;
+
 
      @Override
     public boolean equals(Object o) {
