@@ -19,7 +19,7 @@ public class UsuarioEntity{
     private Long id;
 
     @Column(nullable = false)
-    private String name;
+    private String nome;
 
     @Column(nullable = false, unique = true)
     private String email;
