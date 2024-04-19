@@ -1,9 +1,11 @@
 package com.alexdevprates.backendstatustreinamentos.entity;
 
+import com.alexdevprates.backendstatustreinamentos.dto.TreinamentoDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.BeanUtils;
 
 import java.time.LocalDateTime;
 
@@ -15,6 +17,10 @@ import java.time.LocalDateTime;
 
 public class TreinamentoEntity{
 
+
+    public TreinamentoEntity(TreinamentoDTO treinamentoDTO){
+        BeanUtils.copyProperties(treinamentoDTO,this);
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
