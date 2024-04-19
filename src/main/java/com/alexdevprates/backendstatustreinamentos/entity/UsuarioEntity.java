@@ -1,10 +1,13 @@
 package com.alexdevprates.backendstatustreinamentos.entity;
 
 import java.util.Objects;
+
+import com.alexdevprates.backendstatustreinamentos.dto.UsuarioDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.BeanUtils;
 
 @Entity
 @Table(name="USUARIO")
@@ -13,6 +16,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UsuarioEntity{
 
+    public UsuarioEntity(UsuarioDTO usuarioDTO){
+        BeanUtils.copyProperties(usuarioDTO,this);
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
