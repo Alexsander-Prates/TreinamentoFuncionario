@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class TreinamentoController {
 
     @Autowired
-    TreinamentoService treinamentoService;
+    private TreinamentoService treinamentoService;
 
 }
