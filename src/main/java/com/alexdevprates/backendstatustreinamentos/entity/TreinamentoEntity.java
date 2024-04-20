@@ -29,6 +29,7 @@ public class TreinamentoEntity{
     @Column(nullable = false, unique = true)
     private String nome;
 
+    @Column(nullable = false, unique = true)
     private String descricao;
 
     @Column(nullable = false)
