@@ -7,6 +7,7 @@ import com.alexdevprates.backendstatustreinamentos.entity.TreinamentoEntity;
 import com.alexdevprates.backendstatustreinamentos.repository.TreinamentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,7 +27,7 @@ public class TreinamentoService {
         }
     }
 
-    public TreinamentoDTO buscarTreinamentoPorId(TreinamentoDTO treinamentoDTO) throws Exception {
+    public TreinamentoDTO buscarTreinamentoPorId(@RequestBody TreinamentoDTO treinamentoDTO) throws Exception {
         if(treinamentoDTO.getId()!=null && this.treinamentoRepository.existsById(treinamentoDTO.getId())){
             TreinamentoEntity treinamentoEntity = this.treinamentoRepository.getReferenceById(treinamentoDTO.getId());
             return new TreinamentoDTO(treinamentoEntity);
@@ -35,7 +36,7 @@ public class TreinamentoService {
         }
     }
 
-    public void cadastrarTreinamento(TreinamentoDTO treinamentoDTO) throws Exception {
+    public void cadastrarTreinamento(@RequestBody TreinamentoDTO treinamentoDTO) throws Exception {
         if(treinamentoDTO!=null){
 
             TreinamentoEntity treinamentoEntity = new TreinamentoEntity(treinamentoDTO);
@@ -46,7 +47,7 @@ public class TreinamentoService {
     }
 
 
-    public TreinamentoDTO alterarTreinamento(TreinamentoDTO treinamentoDTO) throws Exception {
+    public TreinamentoDTO alterarTreinamento(@RequestBody TreinamentoDTO treinamentoDTO) throws Exception {
         if (treinamentoDTO.getId() != null && this.treinamentoRepository.existsById(treinamentoDTO.getId())) {
             TreinamentoEntity treinamentoEntity = new TreinamentoEntity(treinamentoDTO);
             return new TreinamentoDTO(this.treinamentoRepository.save(treinamentoEntity));
@@ -56,10 +57,12 @@ public class TreinamentoService {
 
     }
 
-    public void excluirTreinamento(TreinamentoDTO treinamentoDTO) throws Exception {
+    public void excluirTreinamento(@RequestBody TreinamentoDTO treinamentoDTO) throws Exception {
 
         if(treinamentoDTO!=null && this.treinamentoRepository.existsById(treinamentoDTO.getId())){
+
             TreinamentoEntity treinamentoEntity = this.treinamentoRepository.getReferenceById(treinamentoDTO.getId());
+            this.treinamentoRepository.delete(treinamentoEntity);
         } else {
             throw new Exception("Treinamento inválido");
         }
