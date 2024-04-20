@@ -8,6 +8,9 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.BeanUtils;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name="TREINAMENTO")
@@ -37,5 +40,21 @@ public class TreinamentoEntity{
 
     @Column(nullable = false)
     private LocalDateTime fim;
+
+    @ManyToMany(mappedBy = "treinamentos")
+    private List<UsuarioEntity> usuarios = new ArrayList<>();
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TreinamentoEntity that = (TreinamentoEntity) o;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 
 }
