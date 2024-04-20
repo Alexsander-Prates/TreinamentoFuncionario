@@ -1,5 +1,7 @@
 package com.alexdevprates.backendstatustreinamentos.entity;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import com.alexdevprates.backendstatustreinamentos.dto.UsuarioDTO;
@@ -38,6 +40,15 @@ public class UsuarioEntity{
 
     @Column(nullable = false)
     private String cargo;
+
+
+    @ManyToMany
+    @JoinTable(
+            name = "USUARIO_TREINAMENTO", // Nome da tabela de associação
+            joinColumns = @JoinColumn(name = "usuario_id"), // Nome da coluna que referencia o ID do usuário
+            inverseJoinColumns = @JoinColumn(name = "treinamento_id") // Nome da coluna que referencia o ID do treinamento
+    )
+    private List<TreinamentoEntity> treinamentos = new ArrayList<>();
 
 
      @Override
