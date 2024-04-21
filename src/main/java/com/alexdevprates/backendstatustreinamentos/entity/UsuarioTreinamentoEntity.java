@@ -14,10 +14,22 @@ import java.util.Objects;
 @NoArgsConstructor
 public class UsuarioTreinamentoEntity {
 
+    public UsuarioTreinamentoEntity(UsuarioEntity usuarioEntity, TreinamentoEntity treinamentoEntity) {
+        this.usuarioEntity = usuarioEntity;
+        this.treinamentoEntity = treinamentoEntity;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToOne
+    @JoinColumn(name="usuario_id")
+    private UsuarioEntity usuarioEntity;
+
+    @ManyToOne
+    @JoinColumn(name = "treinamento_id")
+    private TreinamentoEntity treinamentoEntity;
 
     @Override
     public boolean equals(Object o) {
