@@ -1,5 +1,6 @@
 package com.alexdevprates.backendstatustreinamentos.entity;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -40,6 +41,9 @@ public class UsuarioEntity{
 
     @Column(nullable = false)
     private String cargo;
+
+    @Column(nullable = false)
+    private LocalDateTime inscricao;
 
 
     @ManyToMany
