@@ -1,0 +1,5 @@
+
+-- V4__add_date_inscricao_usuario.sql
+
+ALTER TABLE USUARIO
+ADD COLUMN inscricao TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP;
