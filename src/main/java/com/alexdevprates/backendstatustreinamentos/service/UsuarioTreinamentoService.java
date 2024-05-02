@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UsuarioTreinamentoService {
@@ -39,17 +40,10 @@ public class UsuarioTreinamentoService {
         }
     }
 
-    public List<String> listaTreinamentosVinculados() {
-        List<UsuarioTreinamentoEntity> listaTreinamento = this.usuarioTreinamentoRepository.findAll();
-        List<String> listaUsuariosComTreinamentos = new ArrayList<>();
-
-        for (UsuarioTreinamentoEntity usuarioTreinamento : listaTreinamento) {
-            String nomeUsuario = usuarioTreinamento.getUsuarioEntity().getNome();
-            String nomeTreinamento = usuarioTreinamento.getTreinamentoEntity().getNome();
-            String usuarioComTreinamento = nomeUsuario + " - " + nomeTreinamento;
-            listaUsuariosComTreinamentos.add(usuarioComTreinamento);
-        }
-
-        return listaUsuariosComTreinamentos;
+    public List<UsuarioTreinamentoDTO> listaTreinamentosVinculados() {
+        List<UsuarioTreinamentoEntity> usuarioTreinamentoEntities = this.usuarioTreinamentoRepository.findAll();
+        return usuarioTreinamentoEntities.stream()
+                .map(usuarioTreinamentoEntity -> new UsuarioTreinamentoDTO(usuarioTreinamentoEntity.getId(), usuarioTreinamentoEntity.getUsuarioEntity(), usuarioTreinamentoEntity.getTreinamentoEntity()))
+                .collect(Collectors.toList());
     }
 }
