@@ -5,6 +5,8 @@ import jakarta.validation.constraints.*;
 import lombok.Data;
 import org.springframework.beans.BeanUtils;
 
+import java.time.LocalDateTime;
+
 @Data
 public class UsuarioDTO {
 
@@ -41,4 +43,5 @@ public class UsuarioDTO {
     @NotBlank(message = "Cargo é obrigatório")
     private String cargo;
 
+    private LocalDateTime inscricao;
 }
