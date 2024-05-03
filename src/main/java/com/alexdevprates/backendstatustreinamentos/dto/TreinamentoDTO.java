@@ -35,4 +35,7 @@ public class TreinamentoDTO {
     private LocalDateTime inicio;
 
     private LocalDateTime fim;
+
+    @NotBlank(message = "Classificação é obrigatória")
+    private String classificacao;
 }
