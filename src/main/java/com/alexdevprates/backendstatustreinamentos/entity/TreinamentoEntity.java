@@ -41,6 +41,9 @@ public class TreinamentoEntity{
     @Column(nullable = false)
     private LocalDateTime fim;
 
+    @Column(nullable = false)
+    private String classificacao;
+
     @ManyToMany(mappedBy = "treinamentos")
     private List<UsuarioEntity> usuarios = new ArrayList<>();
 
