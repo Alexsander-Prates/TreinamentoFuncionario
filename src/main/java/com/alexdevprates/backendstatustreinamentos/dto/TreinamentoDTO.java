@@ -32,9 +32,9 @@ public class TreinamentoDTO {
     @NotBlank(message = "E-mail é obrigatório")
     private String descricao;
 
-    private LocalDateTime inicio;
+    private String inicio;
 
-    private LocalDateTime fim;
+    private String fim;
 
     @NotBlank(message = "Classificação é obrigatória")
     private String classificacao;

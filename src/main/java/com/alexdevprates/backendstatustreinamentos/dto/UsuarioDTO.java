@@ -43,5 +43,5 @@ public class UsuarioDTO {
     @NotBlank(message = "Cargo é obrigatório")
     private String cargo;
 
-    private LocalDateTime inscricao;
+    private String inscricao;
 }

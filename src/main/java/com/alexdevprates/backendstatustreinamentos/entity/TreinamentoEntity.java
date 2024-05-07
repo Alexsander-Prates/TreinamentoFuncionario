@@ -36,10 +36,10 @@ public class TreinamentoEntity{
     private String descricao;
 
     @Column(nullable = false)
-    private LocalDateTime inicio;
+    private String inicio;
 
-    @Column(nullable = false)
-    private LocalDateTime fim;
+    @Column
+    private String fim;
 
     @Column(nullable = false)
     private String classificacao;

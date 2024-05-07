@@ -42,8 +42,8 @@ public class UsuarioEntity{
     @Column(nullable = false)
     private String cargo;
 
-    @Column(nullable = false)
-    private LocalDateTime inscricao;
+    @Column(nullable = false) //tirar
+    private String inscricao;
 
 
     @ManyToMany
