@@ -38,7 +38,7 @@ public class TreinamentoEntity{
     @Column(nullable = false)
     private String inicio;
 
-    @Column
+    @Column(nullable = false)
     private String fim;
 
     @Column(nullable = false)

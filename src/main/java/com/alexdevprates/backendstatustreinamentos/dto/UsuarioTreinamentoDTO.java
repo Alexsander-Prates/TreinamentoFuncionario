@@ -14,11 +14,11 @@ public class UsuarioTreinamentoDTO {
 
         this.usuarioDTO = new UsuarioDTO();
         this.usuarioDTO.setId(usuarioEntity.getId());
-        // Copiar outras propriedades de UsuarioEntity para UsuarioDTO
+
 
         this.treinamentoDTO = new TreinamentoDTO();
         this.treinamentoDTO.setId(treinamentoEntity.getId());
-        // Copiar outras propriedades de TreinamentoEntity para TreinamentoDTO
+
     }
 
 
