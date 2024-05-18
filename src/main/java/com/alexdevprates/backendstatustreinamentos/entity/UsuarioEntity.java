@@ -45,6 +45,9 @@ public class UsuarioEntity{
     @Column(nullable = false)
     private String inscricao;
 
+    @Column(nullable = false)
+    private String autoridade;
+
 
     @ManyToMany
     @JoinTable(
