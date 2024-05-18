@@ -5,5 +5,6 @@ CREATE TABLE IF NOT EXISTS TREINAMENTO (
     nome VARCHAR(50) NOT NULL UNIQUE,
     descricao VARCHAR(255),
     inicio VARCHAR(255),
-    fim VARCHAR(255)
+    fim VARCHAR(255),
+    classificacao VARCHAR(255)
 );

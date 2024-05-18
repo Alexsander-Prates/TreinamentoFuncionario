@@ -2,7 +2,6 @@ package com.alexdevprates.backendstatustreinamentos.service;
 
 
 import com.alexdevprates.backendstatustreinamentos.dto.TreinamentoDTO;
-import com.alexdevprates.backendstatustreinamentos.dto.UsuarioDTO;
 import com.alexdevprates.backendstatustreinamentos.entity.TreinamentoEntity;
 import com.alexdevprates.backendstatustreinamentos.repository.TreinamentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;

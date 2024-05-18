@@ -1,11 +1,11 @@
 package com.alexdevprates.backendstatustreinamentos.repository;
 
-import com.alexdevprates.backendstatustreinamentos.entity.UsuarioEntity;
+import com.alexdevprates.backendstatustreinamentos.entity.FuncionarioEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UsuarioRepository extends JpaRepository<UsuarioEntity, Long> {
+public interface FuncionarioRepository extends JpaRepository<FuncionarioEntity, Long> {
 
 
 }

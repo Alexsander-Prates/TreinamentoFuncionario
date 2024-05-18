@@ -7,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.BeanUtils;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -45,7 +44,7 @@ public class TreinamentoEntity{
     private String classificacao;
 
     @ManyToMany(mappedBy = "treinamentos")
-    private List<UsuarioEntity> usuarios = new ArrayList<>();
+    private List<FuncionarioEntity> usuarios = new ArrayList<>();
 
     @Override
     public boolean equals(Object o) {

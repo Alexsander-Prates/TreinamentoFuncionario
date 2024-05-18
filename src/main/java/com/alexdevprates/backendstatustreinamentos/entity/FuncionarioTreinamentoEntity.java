@@ -8,14 +8,14 @@ import lombok.NoArgsConstructor;
 import java.util.Objects;
 
 @Entity
-@Table(name="USUARIO_TREINAMENTO")
+@Table(name="FUNCIONARIO_TREINAMENTO")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UsuarioTreinamentoEntity {
+public class FuncionarioTreinamentoEntity {
 
-    public UsuarioTreinamentoEntity(UsuarioEntity usuarioEntity, TreinamentoEntity treinamentoEntity) {
-        this.usuarioEntity = usuarioEntity;
+    public FuncionarioTreinamentoEntity(FuncionarioEntity funcionarioEntity, TreinamentoEntity treinamentoEntity) {
+        this.funcionarioEntity = funcionarioEntity;
         this.treinamentoEntity = treinamentoEntity;
     }
 
@@ -24,8 +24,8 @@ public class UsuarioTreinamentoEntity {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name="usuario_id")
-    private UsuarioEntity usuarioEntity;
+    @JoinColumn(name="funcionario_id")
+    private FuncionarioEntity funcionarioEntity;
 
     @ManyToOne
     @JoinColumn(name = "treinamento_id")
@@ -35,7 +35,7 @@ public class UsuarioTreinamentoEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        UsuarioTreinamentoEntity that = (UsuarioTreinamentoEntity) o;
+        FuncionarioTreinamentoEntity that = (FuncionarioTreinamentoEntity) o;
         return Objects.equals(id, that.id);
     }
 

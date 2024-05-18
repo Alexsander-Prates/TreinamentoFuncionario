@@ -1,21 +1,19 @@
 package com.alexdevprates.backendstatustreinamentos.dto;
 
-import com.alexdevprates.backendstatustreinamentos.entity.UsuarioEntity;
+import com.alexdevprates.backendstatustreinamentos.entity.FuncionarioEntity;
 import jakarta.validation.constraints.*;
 import lombok.Data;
 import org.springframework.beans.BeanUtils;
 
-import java.time.LocalDateTime;
-
 @Data
-public class UsuarioDTO {
+public class FuncionarioDTO {
 
-    public UsuarioDTO(){
+    public FuncionarioDTO(){
 
     }
 
-    public UsuarioDTO(UsuarioEntity usuarioEntity){
-        BeanUtils.copyProperties(usuarioEntity, this);
+    public FuncionarioDTO(FuncionarioEntity funcionarioEntity){
+        BeanUtils.copyProperties(funcionarioEntity, this);
     }
 
     private Long id;
@@ -24,16 +22,6 @@ public class UsuarioDTO {
     @Size(min=2,max=50)
     @Pattern(regexp = "^[A-Z]+(.)*")
     private String nome;
-
-    @NotNull(message = "E-mail é obrigatório")
-    @NotBlank(message = "E-mail é obrigatório")
-    @Email
-    private String email;
-
-    @NotNull(message = "Senha obrigatória")
-    @NotBlank(message = "Senha obrigatória")
-    @Size(min = 8, max = 20)
-    private String senha;
 
     @NotNull(message = "Setor é obrigatório")
     @NotBlank(message = "Setor é obrigatório")
