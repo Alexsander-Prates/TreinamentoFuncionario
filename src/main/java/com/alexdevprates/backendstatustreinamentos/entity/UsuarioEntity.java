@@ -14,7 +14,6 @@ import java.util.List;
 
 @Entity(name = "usuario")
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 @Table(name="USUARIO")
 public class UsuarioEntity implements UserDetails {
@@ -29,14 +28,22 @@ public class UsuarioEntity implements UserDetails {
     @Column(nullable = false)
     private String senha;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private UsuarioTipo tipo;
 
+    public UsuarioEntity(String login, String senha, UsuarioTipo tipo) {
+        this.login = login;
+        this.senha = senha;
+        this.tipo = tipo;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        if(this.tipo==UsuarioTipo.ADMINISTRADOR) return List.of( new SimpleGrantedAuthority("ROLE_ADMIN"),(new SimpleGrantedAuthority("ROLE_USER")));
-        else return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+        if (this.tipo == UsuarioTipo.ADMIN) return List.of(
+                new SimpleGrantedAuthority("ROLE_ADMIN"),
+                new SimpleGrantedAuthority("ROLE_USER"));
+    else return List.of(new SimpleGrantedAuthority("ROLE_USER"));
     }
 
     @Override
@@ -51,21 +58,21 @@ public class UsuarioEntity implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true; // Alterado para true para indicar que a conta não está expirada
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true; // Alterado para true para indicar que a conta não está bloqueada
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true; // Alterado para true para indicar que as credenciais não estão expiradas
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true; // Alterado para true para indicar que a conta está ativa
     }
 }
