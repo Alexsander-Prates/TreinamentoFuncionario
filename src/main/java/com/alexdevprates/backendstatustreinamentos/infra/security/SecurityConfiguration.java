@@ -40,11 +40,9 @@ public class SecurityConfiguration  {
                         .requestMatchers(HttpMethod.PUT, "/funcionario/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/funcionario/**").hasRole("ADMIN")
 
-                        // Permissões para /funcionariotreinamento endpoints
                         .requestMatchers(HttpMethod.GET, "/funcionariotreinamento/**").hasAnyRole("ADMIN", "USER")
                         .requestMatchers(HttpMethod.POST, "/funcionariotreinamento/**").hasRole("ADMIN")
 
-                        // Permissões para /treinamento endpoints
                         .requestMatchers(HttpMethod.GET, "/treinamento/**").hasAnyRole("ADMIN", "USER")
                         .requestMatchers(HttpMethod.POST, "/treinamento/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT, "/treinamento/**").hasRole("ADMIN")
@@ -54,7 +52,8 @@ public class SecurityConfiguration  {
                         .requestMatchers(HttpMethod.POST,"/autenticacao/registrar").permitAll()
 
 
-                        // Qualquer outra requisição precisa estar autenticada
+
+
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)

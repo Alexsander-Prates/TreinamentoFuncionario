@@ -2,6 +2,7 @@ package com.alexdevprates.backendstatustreinamentos.controller;
 
 import com.alexdevprates.backendstatustreinamentos.dto.FuncionarioDTO;
 import com.alexdevprates.backendstatustreinamentos.service.FuncionarioService;
+import com.alexdevprates.backendstatustreinamentos.utils.MensagensReponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +31,7 @@ public class FuncionarioController {
     @PostMapping(value = "/cadastro")
     public ResponseEntity<?> cadastrarFuncionario(@RequestBody FuncionarioDTO funcionarioDTO) throws Exception {
         this.funcionarioService.inserirFuncionario(funcionarioDTO);
-        return ResponseEntity.ok("Usuário Cadastrado");
+        return ResponseEntity.ok(MensagensReponseEntity.FUNCIONARIO_CADASTRADO_SUCESSO);
     }
 
     @PutMapping(value = "/alterar")
@@ -42,7 +43,7 @@ public class FuncionarioController {
     @DeleteMapping(value = "/excluir") //500 VERIFICAR
     public ResponseEntity<String> deletarFuncionario(@RequestBody FuncionarioDTO funcionarioDTO) throws Exception {
         this.funcionarioService.excluirUsuario(funcionarioDTO);
-        return ResponseEntity.ok("User Deletado");
+        return ResponseEntity.ok(MensagensReponseEntity.FUNCIONARIO_DELETADO_SUCESSO);
     }
 
 

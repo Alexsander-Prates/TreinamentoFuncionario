@@ -3,6 +3,7 @@ package com.alexdevprates.backendstatustreinamentos.controller;
 import com.alexdevprates.backendstatustreinamentos.dto.TreinamentoDTO;
 import com.alexdevprates.backendstatustreinamentos.entity.TreinamentoEntity;
 import com.alexdevprates.backendstatustreinamentos.service.TreinamentoService;
+import com.alexdevprates.backendstatustreinamentos.utils.MensagensReponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +29,7 @@ public class TreinamentoController {
     @PostMapping(value = "/cadastrar")
     public ResponseEntity<?> cadastroTreinamento(@RequestBody TreinamentoDTO treinamentoDTO) throws Exception {
         this.treinamentoService.cadastrarTreinamento(treinamentoDTO);
-        return ResponseEntity.ok("Treinamento cadastrado com sucesso");
+        return ResponseEntity.ok(MensagensReponseEntity.TREINAMENTO_CADASTRADO_SUCESSO);
     }
 
     @PutMapping(value = "/alterar")
@@ -39,6 +40,6 @@ public class TreinamentoController {
     @DeleteMapping(value = "/excluir")
     public ResponseEntity<String> deletarTreinamento(@RequestBody TreinamentoDTO treinamentoDTO) throws Exception{
         this.treinamentoService.excluirTreinamento(treinamentoDTO);
-        return ResponseEntity.ok("Treinamento excluído com sucesso");
+        return ResponseEntity.ok(MensagensReponseEntity.TREINAMENTO_EXCLUIDO_SUCESSO);
     }
 }
