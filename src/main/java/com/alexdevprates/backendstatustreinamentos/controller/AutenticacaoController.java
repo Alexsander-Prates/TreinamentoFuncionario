@@ -3,6 +3,7 @@ package com.alexdevprates.backendstatustreinamentos.controller;
 import com.alexdevprates.backendstatustreinamentos.dto.UsuarioDTO;
 import com.alexdevprates.backendstatustreinamentos.entity.UsuarioEntity;
 import com.alexdevprates.backendstatustreinamentos.repository.UsuarioRepository;
+import com.alexdevprates.backendstatustreinamentos.service.TokenService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,11 +22,18 @@ public class AutenticacaoController {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+    @Autowired
+    private TokenService tokenService;
+
     @PostMapping("/login")
     public ResponseEntity login (@RequestBody @Valid UsuarioDTO usuarioDto){
         var userNamePassword = new UsernamePasswordAuthenticationToken(usuarioDto.getLogin(),usuarioDto.getSenha());
         var auth = this.authenticationManager.authenticate(userNamePassword); //recebe objeto UsernamePasswordAuthenticationToken
-        return ResponseEntity.ok().build();
+
+
+        var token = tokenService.gerarToken((UsuarioEntity) auth.getPrincipal());
+
+        return ResponseEntity.ok(token.toString());
     }
 
     @PostMapping("/registrar")

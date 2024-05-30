@@ -18,7 +18,7 @@ public class FuncionarioTreinamentoController {
     }
 
     @PostMapping(value = "/vincular")
-    public ResponseEntity<?> vincularFuncionarioNoTreinamento(@RequestBody FuncionarioTreinamentoDTO funcionarioTreinamentoDTO) throws Exception{
+    public ResponseEntity<?> List(@RequestBody FuncionarioTreinamentoDTO funcionarioTreinamentoDTO) throws Exception{
         this.funcionarioTreinamentoService.associarTreinamento(funcionarioTreinamentoDTO);
         return ResponseEntity.ok("Funcionário associado com sucesso");
     }

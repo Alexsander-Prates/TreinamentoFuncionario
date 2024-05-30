@@ -5,7 +5,7 @@ import com.alexdevprates.backendstatustreinamentos.entity.utils.UsuarioTipo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 
-public interface UsuarioRepository extends JpaRepository<UsuarioEntity,Integer> {
+public interface UsuarioRepository extends JpaRepository<UsuarioEntity, Integer> {
 
-    UserDetails findByLogin(String login);
+    UsuarioEntity findByLogin(String login);
 }
