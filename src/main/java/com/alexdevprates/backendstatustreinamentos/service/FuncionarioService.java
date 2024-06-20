@@ -59,9 +59,9 @@ public class FuncionarioService {
         }
     }
 
-    public void excluirUsuario(FuncionarioDTO funcionarioDTO) throws Exception {
-        if(funcionarioDTO !=null && this.funcionarioRepository.existsById(funcionarioDTO.getId())){
-            FuncionarioEntity funcionarioEntity = this.funcionarioRepository.findById(funcionarioDTO.getId()).get();
+    public void excluirUsuario(Long id) throws Exception {
+        if(id !=null && this.funcionarioRepository.existsById(id)){
+            FuncionarioEntity funcionarioEntity = this.funcionarioRepository.findById(id).get();
             this.funcionarioRepository.delete(funcionarioEntity);
         } else {
             throw new Exception("Usuário não encontrado");

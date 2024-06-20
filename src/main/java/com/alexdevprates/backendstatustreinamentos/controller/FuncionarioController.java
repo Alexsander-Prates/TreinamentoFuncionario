@@ -40,9 +40,9 @@ public class FuncionarioController {
         return ResponseEntity.ok(funcionarioDTO);
     }
 
-    @DeleteMapping(value = "/excluir") //500 VERIFICAR
-    public ResponseEntity<String> deletarFuncionario(@RequestBody FuncionarioDTO funcionarioDTO) throws Exception {
-        this.funcionarioService.excluirUsuario(funcionarioDTO);
+    @DeleteMapping(value = "/excluir/{id}") //500 VERIFICAR
+    public ResponseEntity<String> deletarFuncionario(@PathVariable Long id) throws Exception {
+        this.funcionarioService.excluirUsuario(id);
         return ResponseEntity.ok(MensagensReponseEntity.FUNCIONARIO_DELETADO_SUCESSO);
     }
 

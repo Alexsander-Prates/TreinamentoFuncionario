@@ -37,9 +37,9 @@ public class TreinamentoController {
         return ResponseEntity.ok(this.treinamentoService.alterarTreinamento(treinamentoDTO));
     }
 
-    @DeleteMapping(value = "/excluir")
-    public ResponseEntity<String> deletarTreinamento(@RequestBody TreinamentoDTO treinamentoDTO) throws Exception{
-        this.treinamentoService.excluirTreinamento(treinamentoDTO);
+    @DeleteMapping(value = "/excluir/{id}")
+    public ResponseEntity<String> deletarTreinamento(@PathVariable Long id) throws Exception{
+        this.treinamentoService.excluirTreinamento(id);
         return ResponseEntity.ok(MensagensReponseEntity.TREINAMENTO_EXCLUIDO_SUCESSO);
     }
 }

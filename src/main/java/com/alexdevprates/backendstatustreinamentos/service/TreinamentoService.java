@@ -56,11 +56,11 @@ public class TreinamentoService {
 
     }
 
-    public void excluirTreinamento(@RequestBody TreinamentoDTO treinamentoDTO) throws Exception {
+    public void excluirTreinamento(@RequestBody Long id) throws Exception {
 
-        if(treinamentoDTO!=null && this.treinamentoRepository.existsById(treinamentoDTO.getId())){
+        if(id!=null && this.treinamentoRepository.existsById(id)){
 
-            TreinamentoEntity treinamentoEntity = this.treinamentoRepository.getReferenceById(treinamentoDTO.getId());
+            TreinamentoEntity treinamentoEntity = this.treinamentoRepository.findById(id).get();
             this.treinamentoRepository.delete(treinamentoEntity);
         } else {
             throw new Exception("Treinamento inválido");
